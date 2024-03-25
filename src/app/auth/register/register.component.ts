@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { register } from '../../store/auth.actions';
+import { RegisterRequest } from '../interfaces/register-request.interface';
 
 @Component({
   selector: 'app-register',
@@ -14,9 +17,15 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   onSubmit() {
     console.log(this.form.getRawValue());
+
+    const request: RegisterRequest = {
+      user: this.form.getRawValue(),
+    };
+
+    this.store.dispatch(register({ request }));
   }
 }
