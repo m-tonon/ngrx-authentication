@@ -5,7 +5,8 @@ import { register } from '../../store/auth.actions';
 import { RegisterRequest } from '../interfaces/register-request.interface';
 import { RouterLink } from '@angular/router';
 import { AuthStateInterface } from '../interfaces/auth-state.interface';
-import { selectIsSubmitting } from '../../store/auth.selector';
+// import { selectIsSubmitting } from '../../store/auth.selector';
+import { selectIsSubmitting } from '../../store/auth.reducer';
 import { CommonModule } from '@angular/common';
 
 @Component({
