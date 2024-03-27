@@ -8,6 +8,7 @@ import { IAuthState } from '../interfaces/auth-state.interface';
 // import { selectIsSubmitting } from '../../store/auth.selector';
 import { selectIsSubmitting } from '../../store/auth.reducer';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',

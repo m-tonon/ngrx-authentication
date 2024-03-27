@@ -6,9 +6,11 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './store/auth.reducer';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     provideRouter(routes),
     provideClientHydration(),
     provideStore(),
