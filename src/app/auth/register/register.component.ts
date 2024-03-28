@@ -6,14 +6,23 @@ import { IRegisterRequest } from '../interfaces/register-request.interface';
 import { RouterLink } from '@angular/router';
 import { IAuthState } from '../interfaces/auth-state.interface';
 // import { selectIsSubmitting } from '../../store/auth.selector';
-import { selectIsSubmitting } from '../../store/auth.reducer';
+import {
+  selectIsSubmitting,
+  selectValidationErrors,
+} from '../../store/auth.reducer';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../services/auth.service';
+import { combineLatest } from 'rxjs';
+import { BackendErrorMessagesComponent } from '../../shared/components/backend-error-messages/backend-error-messages.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    CommonModule,
+    BackendErrorMessagesComponent,
+  ],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
@@ -23,7 +32,10 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
 
-  isSubmitting$ = this.store.select(selectIsSubmitting);
+  data$ = combineLatest({
+    isSubmitting: this.store.select(selectIsSubmitting),
+    backendErrors: this.store.select(selectValidationErrors),
+  });
 
   constructor(
     private fb: FormBuilder,
