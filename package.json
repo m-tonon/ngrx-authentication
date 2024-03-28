@@ -1,5 +1,5 @@
 {
-  "name": "medium-ngrx",
+  "name": "ngrx-authentication",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:medium-ngrx": "node dist/medium-ngrx/server/server.mjs"
+    "serve:ssr:ngrx-authentication": "node dist/ngrx-authentication/server/server.mjs"
   },
   "private": true,
   "dependencies": {
